@@ -1,0 +1,123 @@
+{
+  "tools": [
+    {
+      "id": "pcr-calculator",
+      "name": "PCR Calculator",
+      "description": "Calculate primer melting temperatures, annealing temperatures, and optimal cycling conditions for polymerase chain reaction experiments.",
+      "category": "Calculator",
+      "tags": ["PCR", "Primers", "Molecular Biology"],
+      "url": "https://github.com/biohacker-fun/pcr-calculator",
+      "icon": "dna"
+    },
+    {
+      "id": "crispr-designer",
+      "name": "CRISPR gRNA Designer",
+      "description": "Design and validate guide RNA sequences for CRISPR-Cas9 gene editing experiments with off-target analysis.",
+      "category": "Design Tool",
+      "tags": ["CRISPR", "Gene Editing", "gRNA"],
+      "url": "https://github.com/biohacker-fun/crispr-designer",
+      "icon": "scissors"
+    },
+    {
+      "id": "plasmid-mapper",
+      "name": "Plasmid Mapper",
+      "description": "Visualize plasmid maps, restriction enzyme sites, and cloning strategies for molecular biology workflows.",
+      "category": "Visualization",
+      "tags": ["Plasmid", "Cloning", "Restriction Enzymes"],
+      "url": "https://github.com/biohacker-fun/plasmid-mapper",
+      "icon": "map"
+    },
+    {
+      "id": "protein-folding-sim",
+      "name": "Protein Folding Simulator",
+      "description": "Simulate protein folding patterns and predict secondary/tertiary structures using simplified energy models.",
+      "category": "Simulation",
+      "tags": ["Protein", "Folding", "Structure"],
+      "url": "https://github.com/biohacker-fun/protein-folding-sim",
+      "icon": "activity"
+    },
+    {
+      "id": "media-calculator",
+      "name": "Culture Media Calculator",
+      "description": "Calculate precise reagent amounts for preparing LB, SOC, and custom bacterial culture media formulations.",
+      "category": "Calculator",
+      "tags": ["Media", "Bacteria", "Culture"],
+      "url": "https://github.com/biohacker-fun/media-calculator",
+      "icon": "flask"
+    },
+    {
+      "id": "sequence-analyzer",
+      "name": "DNA Sequence Analyzer",
+      "description": "Analyze DNA sequences for ORFs, GC content, codon usage, and restriction sites with interactive visualization.",
+      "category": "Analysis",
+      "tags": ["DNA", "Sequence", "ORF"],
+      "url": "https://github.com/biohacker-fun/sequence-analyzer",
+      "icon": "code"
+    },
+    {
+      "id": "gel-electrophoresis-sim",
+      "name": "Gel Electrophoresis Simulator",
+      "description": "Simulate agarose gel electrophoresis results based on fragment sizes and expected band patterns.",
+      "category": "Simulation",
+      "tags": ["Gel", "Electrophoresis", "Fragments"],
+      "url": "https://github.com/biohacker-fun/gel-electrophoresis-sim",
+      "icon": "layers"
+    },
+    {
+      "id": "biobrick-registry",
+      "name": "BioBrick Registry Browser",
+      "description": "Browse and search the iGEM BioBrick registry for standard biological parts and composite devices.",
+      "category": "Database",
+      "tags": ["BioBrick", "iGEM", "Parts"],
+      "url": "https://github.com/biohacker-fun/biobrick-registry",
+      "icon": "database"
+    },
+    {
+      "id": "protocol-builder",
+      "name": "Protocol Builder",
+      "description": "Create, version, and share standardized lab protocols with step-by-step instructions and safety notes.",
+      "category": "Protocol",
+      "tags": ["Protocol", "Lab", "Standard"],
+      "url": "https://github.com/biohacker-fun/protocol-builder",
+      "icon": "file-text"
+    },
+    {
+      "id": "biosafety-checker",
+      "name": "Biosafety Level Checker",
+      "description": "Assess biosafety requirements and containment levels for DIY biology experiments and organisms.",
+      "category": "Safety",
+      "tags": ["Biosafety", "BSL", "Risk Assessment"],
+      "url": "https://github.com/biohacker-fun/biosafety-checker",
+      "icon": "shield"
+    },
+    {
+      "id": "metabolism-tracker",
+      "name": "Personal Metabolism Tracker",
+      "description": "Track and visualize personal metabolic markers including glucose, ketones, and biomarkers over time.",
+      "category": "Quantified Self",
+      "tags": ["Metabolism", "Biomarkers", "Tracking"],
+      "url": "https://github.com/biohacker-fun/metabolism-tracker",
+      "icon": "heart"
+    },
+    {
+      "id": "sleep-optimizer",
+      "name": "Sleep Cycle Optimizer",
+      "description": "Analyze sleep patterns and suggest optimal sleep/wake times based on circadian rhythm data.",
+      "category": "Quantified Self",
+      "tags": ["Sleep", "Circadian", "Optimization"],
+      "url": "https://github.com/biohacker-fun/sleep-optimizer",
+      "icon": "moon"
+    }
+  ],
+  "categories": [
+    "Calculator",
+    "Design Tool",
+    "Visualization",
+    "Simulation",
+    "Analysis",
+    "Database",
+    "Protocol",
+    "Safety",
+    "Quantified Self"
+  ]
+}

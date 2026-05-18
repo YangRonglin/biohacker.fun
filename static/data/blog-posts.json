@@ -1,0 +1,74 @@
+[
+  {
+    "id": "crispr-gene-editing-at-home",
+    "title": "CRISPR Gene Editing at Home: A Beginner's Protocol",
+    "excerpt": "Step-by-step guide to setting up a basic CRISPR-Cas9 experiment in a home lab environment, including safety protocols and equipment list.",
+    "date": "2026-05-15",
+    "category": "gene-editing",
+    "tags": ["CRISPR", "DIY Biology", "Gene Editing", "Home Lab"],
+    "author": "BioHacker_01",
+    "readTime": 12,
+    "content": "# CRISPR Gene Editing at Home: A Beginner's Protocol\n\n## Introduction\nCRISPR-Cas9 has democratized gene editing, making it accessible beyond institutional labs. This protocol outlines a safe, ethical approach to basic CRISPR experiments in a home laboratory setting.\n\n## Equipment Required\n- Micropipette set (0.5-10μL, 10-100μL)\n- Mini centrifuge\n- Heat block or water bath\n- Gel electrophoresis setup\n- UV transilluminator\n- Sterile workbench or laminar flow hood\n\n## Safety First\nAlways follow BSL-1 guidelines. Never work with human cells or pathogenic organisms without proper licensing.\n\n## Protocol Steps\n1. Design your guide RNA using free online tools\n2. Prepare Cas9 protein and gRNA complex\n3. Transform target cells with the ribonucleoprotein complex\n4. Incubate and select for edited colonies\n5. Verify edits via PCR and gel electrophoresis\n\n## Results Tracking\nDocument all variables: temperature, incubation time, reagent concentrations, and observed phenotypes.\n\n> **Disclaimer**: This is for educational purposes only. Always comply with local regulations regarding genetic modification.",
+    "coverImage": "https://miaoda.feishu.cn/aily/api/v1/files/static/55562fe77f8f448dad4c8096b4f8d221_ve_miaoda"
+  },
+  {
+    "id": "nootropic-stack-optimization",
+    "title": "Optimizing My Nootropic Stack: 90-Day Self-Experiment",
+    "excerpt": "Data-driven analysis of a 90-day nootropic stacking experiment with cognitive performance metrics, sleep tracking, and blood work results.",
+    "date": "2026-05-10",
+    "category": "quantified-self",
+    "tags": ["Nootropics", "Cognitive Enhancement", "Self-Experiment", "Data Tracking"],
+    "author": "NeuroHacker",
+    "readTime": 15,
+    "content": "# Optimizing My Nootropic Stack: 90-Day Self-Experiment\n\n## Baseline Measurements\nBefore starting any supplementation, I established baseline metrics across cognitive domains using standardized tests.\n\n## The Stack\n| Compound | Dosage | Timing | Purpose |\n|----------|--------|--------|--------|\n| Lion's Mane | 1000mg | Morning | Neurogenesis |\n| Alpha-GPC | 300mg | Pre-workout | Acetylcholine |\n| L-Theanine | 200mg | With coffee | Focus + calm |\n| Omega-3 | 2000mg | Evening | Brain health |\n| Creatine | 5g | Anytime | Cognitive energy |\n\n## Tracking Methodology\n- Daily: Dual N-Back working memory test\n- Weekly: Cambridge Brain Sciences battery\n- Monthly: Blood panel (lipid, liver, inflammatory markers)\n- Continuous: Oura Ring sleep + HRV tracking\n\n## Key Findings\nAfter 90 days, working memory improved by 18%, sleep efficiency increased from 82% to 91%, and resting heart rate dropped by 4 BPM.\n\n## Lessons Learned\nConsistency matters more than complexity. The biggest gains came from sleep optimization and exercise, not the supplements themselves.",
+    "coverImage": "https://miaoda.feishu.cn/aily/api/v1/files/static/26b4ce02fcae4e3394721cfc9d6a5f67_ve_miaoda"
+  },
+  {
+    "id": "diy-microbiome-sequencing",
+    "title": "DIY Microbiome Sequencing: From Sample to Data",
+    "excerpt": "How I sequenced my gut microbiome using Oxford Nanopore's MinION and analyzed the results with open-source bioinformatics tools.",
+    "date": "2026-05-05",
+    "category": "genomics",
+    "tags": ["Microbiome", "Nanopore", "Sequencing", "Bioinformatics", "Gut Health"],
+    "author": "GenomeTinker",
+    "readTime": 18,
+    "content": "# DIY Microbiome Sequencing: From Sample to Data\n\n## Overview\nThe Oxford Nanopore MinION has made DNA sequencing portable and affordable. Here's how I used it to sequence my own gut microbiome.\n\n## Sample Collection\n- Fecal sample collected using OMNIgene GUT kit\n- Stored at room temperature for up to 60 days\n- DNA extracted using QIAamp PowerFecal Pro kit\n\n## Library Preparation\n1. Quantify DNA with Qubit fluorometer\n2. Fragment DNA to ~8kb using g-TUBE\n3. End-prep and adapter ligation\n4. Load onto R9.4.1 flow cell\n\n## Sequencing Run\n- Platform: MinION Mk1B\n- Flow cell: R9.4.1\n- Run time: 48 hours\n- Total output: 2.3 Gb\n- N50: 6.8 kb\n\n## Bioinformatics Pipeline\n```bash\n# Basecalling with Guppy\nont-guppy --input fast5/ --output fastq/\n\n# Taxonomic classification with Kraken2\nkraken2 --db kraken2_db --output kraken.out fastq/reads.fastq\n\n# Visualization with Krona\nktImportTaxonomy kraken.out -o microbiome.html\n```\n\n## Results\nIdentified 347 species across 12 phyla. Firmicutes/Bacteroidetes ratio: 2.1 (within healthy range).",
+    "coverImage": "https://miaoda.feishu.cn/aily/api/v1/files/static/3be3315f57244aeca2bd4e80b87a7740_ve_miaoda"
+  },
+  {
+    "id": "building-bioreactor",
+    "title": "Building a $200 Bioreactor for Home Fermentation",
+    "excerpt": "Complete build guide for a DIY bioreactor with temperature control, pH monitoring, and automated stirring — all for under $200.",
+    "date": "2026-04-28",
+    "category": "bioengineering",
+    "tags": ["Bioreactor", "Fermentation", "DIY Hardware", "Open Source"],
+    "author": "BioMaker",
+    "readTime": 20,
+    "content": "# Building a $200 Bioreactor for Home Fermentation\n\n## Bill of Materials\n| Component | Cost | Source |\n|-----------|------|--------|\n| 5L glass vessel | $35 | Lab surplus |\n| Arduino Uno | $8 | AliExpress |\n| DS18B20 temp sensor | $3 | AliExpress |\n| Peristaltic pump | $15 | AliExpress |\n| 12V DC motor | $6 | AliExpress |\n| pH sensor module | $12 | AliExpress |\n| Heating pad | $8 | Pet store |\n| Miscellaneous tubing/fittings | $20 | Hardware store |\n| **Total** | **~$107** | |\n\n## Control System\nThe Arduino runs a PID loop for temperature control and logs all sensor data to an SD card.\n\n## Calibration\n- Temperature: ±0.5°C accuracy after calibration\n- pH: ±0.2 after 2-point calibration\n- Stirring speed: 100-500 RPM adjustable\n\n## First Run: Kombucha\nSuccessfully maintained 28°C for 7 days with stable pH drift from 4.5 to 3.2.\n\n## Next Steps\nAdding dissolved oxygen sensor and automated nutrient dosing.",
+    "coverImage": "https://miaoda.feishu.cn/aily/api/v1/files/static/55562fe77f8f448dad4c8096b4f8d221_ve_miaoda"
+  },
+  {
+    "id": "cold-exposure-protocol",
+    "title": "Cold Exposure Protocol: HRV and Hormesis Data",
+    "excerpt": "6-month cold exposure experiment tracking heart rate variability, brown fat activation, and metabolic markers with detailed data analysis.",
+    "date": "2026-04-20",
+    "category": "quantified-self",
+    "tags": ["Cold Exposure", "HRV", "Hormesis", "Metabolism", "Biohacking"],
+    "author": "ColdAdapt",
+    "readTime": 10,
+    "content": "# Cold Exposure Protocol: HRV and Hormesis Data\n\n## Protocol\n- 3x per week cold water immersion\n- Temperature: 10-12°C (50-54°F)\n- Duration: 3-5 minutes per session\n- Time: Morning, fasted state\n\n## Metrics Tracked\n1. **HRV** (rMSSD): Measured via Oura Ring upon waking\n2. **Resting Heart Rate**: Continuous monitoring\n3. **Body Temperature**: Basal temperature via continuous sensor\n4. **Blood Work**: Monthly panel including thyroid markers\n5. **Subjective**: Energy, mood, focus scores (1-10)\n\n## Results After 6 Months\n- HRV increased from 42ms to 58ms (+38%)\n- RHR decreased from 58 to 52 BPM\n- Subjective energy scores improved from 6.2 to 8.1\n- TSH remained stable (1.8 → 1.6 mIU/L)\n\n## Mechanisms\nCold exposure activates brown adipose tissue (BAT), increases norepinephrine by 200-300%, and triggers hormetic stress adaptation.\n\n## Caveats\nIndividual responses vary significantly. Start with shorter exposures and gradually increase duration.",
+    "coverImage": "https://miaoda.feishu.cn/aily/api/v1/files/static/26b4ce02fcae4e3394721cfc9d6a5f67_ve_miaoda"
+  },
+  {
+    "id": "open-source-plasmid-design",
+    "title": "Open Source Plasmid Design with Benchlingo",
+    "excerpt": "How to design custom plasmids using free bioinformatics tools, order synthesized DNA, and verify constructs in your home lab.",
+    "date": "2026-04-12",
+    "category": "gene-editing",
+    "tags": ["Plasmid Design", "Synthetic Biology", "Open Source", "Benchlingo"],
+    "author": "PlasmidPunk",
+    "readTime": 14,
+    "content": "# Open Source Plasmid Design with Benchlingo\n\n## What is a Plasmid?\nA plasmid is a circular DNA molecule that can replicate independently of chromosomal DNA. They're the workhorses of molecular biology.\n\n## Design Workflow\n1. Define your goal (protein expression, gene knockout, reporter assay)\n2. Select backbone (pUC19, pET, pGEX, etc.)\n3. Add your insert using Gibson assembly or restriction cloning\n4. Verify with in silico digestion\n5. Order synthesized DNA from commercial providers\n\n## Free Tools\n- **Benchlingo**: Cloud-based molecular biology suite\n- **SnapGene Viewer**: Free plasmid visualization\n- **NEBcutter**: Restriction enzyme analysis\n- **Jit**: Codon optimization\n\n## Cost Breakdown\n- Gene synthesis (1kb): ~$50-100\n- Restriction enzymes: ~$30 each\n- Competent cells: ~$20/50 reactions\n- Agar plates: ~$0.50 each (homemade)\n\n## Verification\nAlways sequence your final construct. Sanger sequencing costs ~$5-8 per read and catches 95% of cloning errors.",
+    "coverImage": "https://miaoda.feishu.cn/aily/api/v1/files/static/3be3315f57244aeca2bd4e80b87a7740_ve_miaoda"
+  }
+]
