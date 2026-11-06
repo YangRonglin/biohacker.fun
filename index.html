@@ -25,16 +25,10 @@
 <link rel="canonical" href="https://biohacker.fun/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- 首屏用到的字体面全部预载：否则浏览器要等 fonts.css 解析完才能发现
-     notosans-sc-700/800 与 jetbrains-mono-700，白白多一个 RTT。
-     首屏需要：h1(SC800) · 按钮(SC700) · 正文(SC400) · 字标(Baloo2 800)
-              · kicker/标签(JetBrains 400) · "现在 v2.17"(JetBrains 700) -->
-<link rel="preload" href="assets/fonts/notosans-sc-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/notosans-sc-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/notosans-sc-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/jetbrains-mono-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/baloo2-800.woff2" as="font" type="font/woff2" crossorigin>
+<!-- 每族只有一份可变字体；预载首屏立刻要用的三份 -->
+<link rel="preload" href="assets/fonts/notosans-sc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/baloo2.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <script>document.documentElement.classList.add("js");</script>

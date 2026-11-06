@@ -2,63 +2,53 @@
    biohacker.fun — 自托管字体
    三层字体（VI 手册 P.10）：
      DISPLAY / Baloo 2 800        字标、封面、页题
-     BODY    / Noto Sans SC 400·700·800   全站唯一中文家族
-     DATA    / JetBrains Mono 400·700      等宽即「机器在读」
+     BODY    / Noto Sans SC       全站唯一中文家族
+     DATA    / JetBrains Mono     等宽即「机器在读」
 
-   每档都是**静态**字体，@font-face 写单值 font-weight ——
-   浏览器因此不做「声明范围 → 字体轴范围」的归一化，
-   请求 400 就真的是 400。
-   （旧实现声明 300 900 而 fvar 轴是 100 900，正文实际落在
-     wght 233、拉丁正文落在 wght 100，全站中文偏细且中英不同粗。）
+   **每个族只有一份可变字体，@font-face 声明 font-weight: 400 800。**
+   两个理由，都是踩过坑才定下来的：
 
-   Noto Sans SC 三档各自覆盖站点全部 702 个用字，
-   任何元素在任何字重下都不会掉字。
+   1. 字重映射必须是恒等的。
+      浏览器按 CSS Fonts 4 把「请求字重」在「@font-face 声明范围」内归一化，
+      再线性映射到「字体 fvar 轴范围」。两者不等长就会产生偏移——
+      旧实现声明 300 900 而 fvar 轴是 100 900，正文 400 实际渲染在
+      **wght 233**：全站中文偏细，且同段拉丁更细（wght 100），中英不同粗。
+      让声明范围 == 轴范围（都是 400 800），映射即恒等。
+
+   2. 一份文件覆盖全部用字，任何字重都不会掉字。
+      CSS Fonts 4 的字形回退：某字在匹配到的 @font-face 里缺字形时，
+      浏览器沿 font-family 栈往后找，**不会回头找同家族的其它字重**。
+      所以「每个字重一个静态文件」一旦文案改字就会掉字
+      （Windows 下掉到宋体 → 中英跳脸）。可变字体没有这个风险。
+
+   字形集合按站点实际用字裁剪（723 个字符，含 613 个汉字），
+   拉丁两族裁到 97 个拉丁字符 —— 它们缺的中文标点由 Noto Sans SC 接管
+   （--mono 栈里 Noto Sans SC 紧随其后）。
    ============================================================ */
 
 /* ---------- DISPLAY · 字标 / 页题 ---------- */
 @font-face{
   font-family:"Baloo 2";
   font-style:normal;
-  font-weight:800;
+  font-weight:400 800;
   font-display:swap;
-  src:url("../fonts/baloo2-800.woff2") format("woff2");
+  src:url("../fonts/baloo2.woff2") format("woff2");
 }
 
 /* ---------- BODY · 全站唯一中文家族 ---------- */
 @font-face{
   font-family:"Noto Sans SC";
   font-style:normal;
-  font-weight:400;
+  font-weight:400 800;
   font-display:swap;
-  src:url("../fonts/notosans-sc-400.woff2") format("woff2");
-}
-@font-face{
-  font-family:"Noto Sans SC";
-  font-style:normal;
-  font-weight:700;
-  font-display:swap;
-  src:url("../fonts/notosans-sc-700.woff2") format("woff2");
-}
-@font-face{
-  font-family:"Noto Sans SC";
-  font-style:normal;
-  font-weight:800;
-  font-display:swap;
-  src:url("../fonts/notosans-sc-800.woff2") format("woff2");
+  src:url("../fonts/notosans-sc.woff2") format("woff2");
 }
 
 /* ---------- DATA · 等宽 ---------- */
 @font-face{
   font-family:"JetBrains Mono";
   font-style:normal;
-  font-weight:400;
+  font-weight:400 800;
   font-display:swap;
-  src:url("../fonts/jetbrains-mono-400.woff2") format("woff2");
-}
-@font-face{
-  font-family:"JetBrains Mono";
-  font-style:normal;
-  font-weight:700;
-  font-display:swap;
-  src:url("../fonts/jetbrains-mono-700.woff2") format("woff2");
+  src:url("../fonts/jetbrains-mono.woff2") format("woff2");
 }
