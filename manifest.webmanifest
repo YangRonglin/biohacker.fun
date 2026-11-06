@@ -1,0 +1,19 @@
+{
+  "name": "biohacker.fun",
+  "short_name": "biohacker.fun",
+  "description": "生物黑客 / 量化自我 / 开源智造。破茧不是终点，是又一次编译的开始。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FBF7EC",
+  "theme_color": "#FBF7EC",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

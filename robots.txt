@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# 开发脚手架与手册原稿不对外
+Disallow: /.ref/
+Disallow: /.workbuddy/
+Disallow: /vi-manual-D2.pdf
+Disallow: /收款码.jpg
+
+Sitemap: https://biohacker.fun/sitemap.xml

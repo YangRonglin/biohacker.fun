@@ -185,6 +185,9 @@
 
       var visible = hit && shown > 0;
       b.classList.toggle('is-hidden', !visible);
+      /* 分组计数同步：筛选后角标要反映实际可见行数 */
+      var badge = b.querySelector('.board__n');
+      if (badge) badge.textContent = shown;
       if (visible) { groups++; total += shown; }
     });
 
@@ -203,8 +206,11 @@
 
   chips.forEach(function (c) {
     c.addEventListener('click', function () {
-      chips.forEach(function (x) { x.classList.remove('is-on'); });
-      c.classList.add('is-on');
+      chips.forEach(function (x) {
+        var on = x === c;
+        x.classList.toggle('is-on', on);
+        x.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
       group = c.getAttribute('data-g');
       filter();
     });
@@ -214,7 +220,11 @@
     reset.addEventListener('click', function () {
       if (q) q.value = '';
       group = 'all';
-      chips.forEach(function (x) { x.classList.toggle('is-on', x.getAttribute('data-g') === 'all'); });
+      chips.forEach(function (x) {
+        var on = x.getAttribute('data-g') === 'all';
+        x.classList.toggle('is-on', on);
+        x.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
       filter();
     });
   }
@@ -222,6 +232,20 @@
   filter();
 
   /* ---------- 08 复制 ---------- */
+  /* 常驻 live region：动态插入的 live region 在部分屏幕阅读器上不播报首条消息 */
+  var live = document.createElement('span');
+  live.className = 'sr-only';
+  live.setAttribute('role', 'status');
+  live.setAttribute('aria-live', 'polite');
+  document.body.appendChild(live);
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    return Promise.reject(new Error('no clipboard api'));
+  }
+
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var text = btn.getAttribute('data-copy');
@@ -229,14 +253,29 @@
         var old = btn.innerHTML;
         btn.classList.add('is-done');
         btn.innerHTML = '已复制 <span class="mono">✓</span>';
+        live.textContent = '已复制：' + text;
         setTimeout(function () {
           btn.classList.remove('is-done');
           btn.innerHTML = old;
         }, 1600);
       };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, function () { /* 无权限时静默 */ });
-      }
+      copyText(text).then(done, function () {
+        live.textContent = '复制失败：浏览器不支持剪贴板 API';
+      });
+    });
+  });
+
+  /* 模块 ID 点击复制 —— 让 .mod 的悬停反馈有真实行为支撑 */
+  document.querySelectorAll('.mod__id').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-id');
+      copyText(id).then(function () {
+        btn.classList.add('is-copied');
+        live.textContent = '已复制模块 ID：' + id;
+        setTimeout(function () { btn.classList.remove('is-copied'); }, 1400);
+      }, function () {
+        live.textContent = '复制失败：' + id;
+      });
     });
   });
 

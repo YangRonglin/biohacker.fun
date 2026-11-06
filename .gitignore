@@ -5,3 +5,9 @@ desktop.ini
 *.swp
 .idea/
 .vscode/
+
+# 开发脚手架与手册原稿 —— 不随站点发布
+.ref/
+.workbuddy/
+vi-manual-D2.pdf
+收款码.jpg
