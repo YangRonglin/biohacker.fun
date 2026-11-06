@@ -25,9 +25,16 @@
 <link rel="canonical" href="https://biohacker.fun/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="preload" href="assets/fonts/baloo2-800.woff2" as="font" type="font/woff2" crossorigin>
+<!-- 首屏用到的字体面全部预载：否则浏览器要等 fonts.css 解析完才能发现
+     notosans-sc-700/800 与 jetbrains-mono-700，白白多一个 RTT。
+     首屏需要：h1(SC800) · 按钮(SC700) · 正文(SC400) · 字标(Baloo2 800)
+              · kicker/标签(JetBrains 400) · "现在 v2.17"(JetBrains 700) -->
+<link rel="preload" href="assets/fonts/notosans-sc-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/notosans-sc-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/notosans-sc-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/baloo2-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <script>document.documentElement.classList.add("js");</script>
@@ -191,7 +198,12 @@
       <!-- 真实产品截图：产品证据优先于品牌标志 -->
       <figure class="shot-real reveal">
         <picture>
-          <source srcset="assets/shots/main-paper-1400.webp" type="image/webp">
+          <source srcset="assets/shots/main-paper-560.webp 560w,
+                          assets/shots/main-paper-1040.webp 1040w"
+                  sizes="(max-width: 860px) calc(100vw - 32px),
+                         (max-width: 1080px) 60vw,
+                         520px"
+                  type="image/webp">
           <img src="assets/shots/main-paper.png" width="1260" height="880"
                alt="NetAdmin Toolbox 真实界面截图：左侧为按功能分组的模块树与搜索框，中间为四列结果表，底部为实时运行日志"
                loading="eager" decoding="async" fetchpriority="high">
@@ -277,7 +289,10 @@
     <div class="shot__grid">
       <figure class="shot__fig shot__fig--wide reveal">
         <picture>
-          <source srcset="assets/shots/main-paper-1400.webp" type="image/webp">
+          <source srcset="assets/shots/main-paper-560.webp 560w,
+                          assets/shots/main-paper-1040.webp 1040w"
+                  sizes="(max-width: 1080px) calc(100vw - 48px), 740px"
+                  type="image/webp">
           <img src="assets/shots/main-paper.png" width="1260" height="880"
                alt="纸色主题主界面：左栏为按功能分组的模块树，中间为四列扫描结果表，底部为逐行流式输出的运行日志"
                loading="lazy" decoding="async">
@@ -290,7 +305,7 @@
 
       <figure class="shot__fig reveal">
         <picture>
-          <source srcset="assets/shots/main-ink.webp" type="image/webp">
+          <source srcset="assets/shots/main-ink-760.webp" type="image/webp">
           <img src="assets/shots/main-ink.png" width="1500" height="1020"
                alt="墨色主题主界面：与纸色主题同一套信息结构，反白文字与提亮藤紫选中态"
                loading="lazy" decoding="async">
@@ -303,7 +318,7 @@
 
       <figure class="shot__fig reveal">
         <picture>
-          <source srcset="assets/shots/empty-paper.webp" type="image/webp">
+          <source srcset="assets/shots/empty-paper-760.webp" type="image/webp">
           <img src="assets/shots/empty-paper.png" width="1260" height="880"
                alt="空状态界面：结果区显示一段断开的线稿走线与提示「信号没到，线就不画完」，没有红色告警"
                loading="lazy" decoding="async">
