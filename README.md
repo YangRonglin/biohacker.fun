@@ -13,10 +13,10 @@ robots.txt             爬虫策略（屏蔽 .ref/ 与手册原稿）
 sitemap.xml            单 URL 站点地图
 manifest.webmanifest   PWA 清单
 assets/css/site.css    样式（变量 → 版式 → 版块 → 响应 → 降级）
-assets/css/fonts.css   自托管字体声明（6 个 @font-face，单值 font-weight）
-assets/fonts/*.woff2   自托管字体（9 个文件，343 KB）
+assets/css/fonts.css   自托管字体声明（3 个 @font-face，可变字体）
+assets/fonts/*.woff2   自托管字体（3 个文件，185 KB）
 assets/js/site.js      交互（无框架，11 个模块，含 reduced-motion 降级）
-assets/shots/*.webp    真实产品截图（8 张，WebP + PNG 兜底）
+assets/shots/*.webp    真实产品截图（WebP + PNG 兜底，共 162 KB）
 assets/pay-wechat.png  收款码（全站唯一位图之一，360×360，已去白底）
 assets/og.png          分享预览图 1200×630
 assets/favicon.svg     站点图标
@@ -25,21 +25,45 @@ CNAME                  自定义域名 biohacker.fun
 
 ## 字体
 
-三个家族，全部自托管、静态实例化：
+三个家族，全部自托管、**每族一份可变字体**：
 
-| 族 | 字重 | 文件 |
-|---|---|---|
-| Baloo 2 | 800 | `baloo2-800.woff2`（11 KB） |
-| Noto Sans SC | 400 / 700 / 800 | `notosans-sc-{400,700,800}.woff2`（各 92–94 KB） |
-| JetBrains Mono | 400 / 700 | `jetbrains-mono-{400,700}.woff2`（各 15 KB） |
+| 族 | 文件 | 体积 | 轴 |
+|---|---|---|---|
+| Baloo 2 | `baloo2.woff2` | 13 KB | wght 400–800 |
+| Noto Sans SC | `notosans-sc.woff2` | 163 KB | wght 400–800 |
+| JetBrains Mono | `jetbrains-mono.woff2` | 9 KB | wght 400–800 |
 
-**关键约束**：`@font-face` 必须写**单值** `font-weight`。
-早期版本声明 `font-weight: 300 900` 而字体的 fvar 轴是 `100 900`，
-浏览器按 CSS Fonts 4 做「声明范围 → 轴范围」归一化，正文 400 实际渲染在
-**wght 233** —— 全站中文偏细，且中英不同粗。改为静态字体 + 单值声明后映射恒等。
+**两条踩过坑才定下来的约束：**
 
-字形集合按站点实际用字裁剪（702 个字符，含 594 个汉字），三个字重各自覆盖全集，
-任何元素在任何字重下都不会掉字。
+1. **声明范围必须等于轴范围。**
+   浏览器按 CSS Fonts 4 把「请求字重」在「@font-face 声明范围」内归一化，
+   再线性映射到「字体 fvar 轴范围」。两者不等长就产生偏移——
+   早期版本声明 `300 900` 而 fvar 轴是 `100 900`，正文 400 实际渲染在
+   **wght 233**：全站中文偏细，且同段拉丁更细（wght 100），中英不同粗。
+   现在声明 `400 800`、轴也是 `400 800`，映射恒等。
+
+2. **一份文件覆盖全部用字，不能按字重拆文件。**
+   CSS Fonts 4 的字形回退：某字在匹配到的 @font-face 里缺字形时，
+   浏览器沿 font-family 栈往后找，**不会回头找同家族的其它字重**。
+   「每个字重一个静态文件」一旦文案改字就会掉字（Windows 下掉到宋体 → 中英跳脸）。
+   可变字体没有这个风险。
+
+字形集合按站点实际用字裁剪（723 个字符，含 613 个汉字），拉丁两族裁到 97 个拉丁字符，
+它们缺的中文标点由 `--mono` 栈里的 Noto Sans SC 接管。
+
+### 重新生成字体
+
+改动文案后需要重建（新增的汉字必须进字库，否则会掉字）：
+
+```bash
+python .ref/collect_chars.py      # 采集当前用字
+python .ref/static_weights.py     # 按字重归类
+python .ref/build_vf2.py          # 构建三份可变字体
+python .ref/verify_vf.py          # 验证字重映射 + 逐字符掉字检查
+```
+
+`verify_vf.py` 会逐个字符在 400/700/800 三档下做像素比对，
+任何一个字符在三档中任一档画不出来就判定失败。
 
 ## 本地预览
 
